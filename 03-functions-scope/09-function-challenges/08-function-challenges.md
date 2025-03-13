@@ -65,15 +65,7 @@ console.log(minMax([1, 2, 3, 4, 5]));
   <summary>Click For Solution</summary>
   
 ```JavaScript
-function minMax(arr) {
-  const min = Math.min(...arr);
-  const max = Math.max(...arr);
-
-return {
-min,
-max,
-};
-}
+const minMax = (arr) => (Math.min(...arr), Math.max(...arr));
 
 console.log(minMax([55, 32, 43, 54, 65, 76, 87, 98, 109]));
 // { min: 32, max: 109 }
