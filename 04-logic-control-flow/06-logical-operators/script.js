@@ -1,37 +1,81 @@
-console.log(10 < 20 && 30 > 15 && 40 > 30); // Must all be true
-console.log(10 > 20 || 30 < 15); // Only one has to be true
+console.log(10 < 20 && 30 > 15 && 40 > 30); // If all are true then true. If one is false then false
+console.log(10 > 20 || 30 > 15); // If one is true then true. If all are false then false
 
-// && - Will return first falsy value or the last value
+console.log('');
+
+// ==================================================
+// && - Will return "first falsy value" or the "last value" if all are truthy
+// ==================================================
 let a;
 
 a = 10 && 20;
-a = 10 && 20 && 30;
-a = 10 && 0 && 30;
-a = 10 && '' && 0 && 30;
-
 console.log(a);
 
+a = 10 && 20 && 30;
+console.log(a);
+
+a = 10 && 0 && 30;
+console.log(a);
+
+a = 10 && NaN && '' && 30 && undefined;
+console.log(a);
+
+console.log('');
+
 const posts = ['Post One', 'Post Two'];
-posts.length > 0 && console.log(posts[0]);
+a = posts.length > 0 && console.log(posts[0]); // console.log(posts[0]) is falsy because console.log() returns "undefined"
+console.log(a);
 
-// || - Will return the first truthy value or the last value
+console.log('');
 
+// ==================================================
+// || - Will return the "first truthy value" or the "last value" if all are falsy
+// ==================================================
 let b;
 
 b = 10 || 20;
-b = 0 || 20;
-b = 0 || null || '' || undefined;
-
 console.log(b);
 
-// ?? - Returns the right side operand when the left is null or undefined
+b = 0 || 20;
+console.log(b);
+
+b = 0 || null || '' || undefined;
+console.log(b);
+
+console.log('');
+
+// ==================================================
+// ?? - Returns the "right side operand" when the left is "null or undefined"
+// ==================================================
 
 let c;
 
-c = 10 ?? 20;
-c = null ?? 20;
-c = undefined ?? 30;
-c = 0 ?? 30;
-c = '' ?? 30;
+c = 'left side' ?? 'right side';
+console.log(c);
 
+c = 10 ?? 20;
+console.log(c);
+
+c = false ?? 100;
+console.log(c);
+
+c = 0 ?? 30;
+console.log(c);
+
+c = '' ?? 30;
+console.log(c);
+
+c = NaN ?? 100;
+console.log(c);
+
+c = null ?? 'right side';
+console.log(c);
+
+c = undefined ?? 'right side';
+console.log(c);
+
+c = null ?? 100;
+console.log(c);
+
+c = undefined ?? 1000;
 console.log(c);

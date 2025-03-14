@@ -1,5 +1,14 @@
-const x = Math.floor(Math.random() * 100 + 1);
-const y = Math.floor(Math.random() * 50 + 1);
+x_random = Math.random();
+y_random = Math.random();
+
+// const x = Math.floor(x_random * 100 + 1);
+// const y = Math.floor(y_random * 50 + 1);
+
+const x = Math.ceil(x_random * 100);
+const y = Math.ceil(y_random * 50);
+
+console.log(x_random, x);
+console.log(y_random, y);
 
 // Get the sum
 const sum = x + y;

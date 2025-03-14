@@ -4,10 +4,17 @@ const myString = 'developer';
 let myNewString;
 
 // Solution 1:
-myNewString = myString.charAt(0).toUpperCase() + myString.substring(1);
-// Solution 2:
-myNewString = myString[0].toUpperCase() + myString.substring(1);
-// Solution 3:
-myNewString = `${myString[0].toUpperCase()}${myString.slice(1)}`;
+solution1 = myString.charAt(0).toUpperCase() + myString.substring(1);
+console.log(solution1);
 
-console.log(myNewString);
+// Solution 2:
+solution2 = myString[0].toUpperCase() + myString.substring(1);
+console.log(solution2);
+
+// Solution 3:
+solution3 = `${myString[0].toUpperCase()}${myString.slice(1)}`;
+console.log(solution3);
+
+// Solution 4:
+solution4 = myString.replace(myString[0], myString[0].toUpperCase());
+console.log(solution4);

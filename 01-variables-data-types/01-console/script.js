@@ -19,7 +19,7 @@ console.warn('Warning');
 console.table({ name: 'Brad', email: 'brad@gmail.com' });
 
 // Group console commands
-console.group('simple');
+console.group('my console log group');
 console.log(x);
 console.error('Alert');
 console.warn('Warning');
