@@ -47,8 +47,17 @@ output = document.images;
 output = document.images[0];
 output = document.images[0].src;
 
+console.log(output);
+
+// ==================================================
 // Turn an HTMLCollection into an array
+// ==================================================
 const forms = Array.from(document.forms);
 forms.forEach((form) => console.log(form));
 
-console.log(output);
+/*
+    document.forms is an HTMLCollection, not an array. We can turn it into an array using Array.from().
+    Then we can use forEach() on it.
+*/
+
+// document.forms.forEach((form) => console.log(form)); // TypeError: document.forms.forEach is not a function

@@ -1,6 +1,12 @@
+// ==================================================
 // querySelectorAll()
-// Returns a NodeList
-
+// ==================================================
+/*
+    - Returns a NodeList
+    - Array-like object
+    - Can use forEach() on a NodeList
+    - Can access elements by index
+*/
 const listItems = document.querySelectorAll('.item');
 
 // Access elements by index
@@ -11,23 +17,26 @@ listItems[1].style.color = 'red';
 
 // We can use forEach() on a NodeList
 listItems.forEach((item, index) => {
-  item.style.color = 'red';
+    item.style.color = 'red';
 
-  if (index === 1) {
-    item.remove();
-  }
+    if (index === 1) {
+        item.remove();
+    }
 
-  if (index === 0) {
-    item.innerHTML = ` Oranges
+    if (index === 0) {
+        item.innerHTML = ` Oranges
     <button class="remove-item btn-link text-red">
       <i class="fa-solid fa-xmark"></i>
     </button>`;
-  }
+    }
 });
 
-// getElementsByClassName()
-// Returns an HTMLCollection
+console.log('');
 
+// ==================================================
+// getElementsByClassName()
+// ==================================================
+// Returns an HTMLCollection
 const listItems2 = document.getElementsByClassName('item');
 
 console.log(listItems2[2].innerText);
@@ -35,10 +44,21 @@ console.log(listItems2[2].innerText);
 const listItemsArray = Array.from(listItems2);
 
 listItemsArray.forEach((item) => {
-  console.log(item.innerText);
+    console.log(item.innerText);
 });
 
-// getElementsByTagName()
+console.log('');
 
+// ==================================================
+// getElementsByTagName()
+// ==================================================
+// Returns an HTMLCollection
 const listItems3 = document.getElementsByTagName('li');
+
 console.log(listItems3[0].innerText);
+
+const listItemsArray2 = Array.from(listItems3);
+
+listItemsArray2.forEach((item) => {
+    console.log(item.innerText);
+});
