@@ -1,22 +1,22 @@
 function getData(endpoint) {
-  return new Promise((resolve, reject) => {
-    const xhr = new XMLHttpRequest();
-    xhr.open('GET', endpoint);
+    return new Promise((resolve, reject) => {
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', endpoint);
 
-    xhr.onreadystatechange = function () {
-      if (this.readyState === 4) {
-        if (this.status === 200) {
-          resolve(JSON.parse(this.responseText));
-        } else {
-          reject('Error: Something went wrong');
-        }
-      }
-    };
+        xhr.onreadystatechange = function () {
+            if (this.readyState === 4) {
+                if (this.status === 200) {
+                    resolve(JSON.parse(this.responseText));
+                } else {
+                    reject('Error: Something went wrong');
+                }
+            }
+        };
 
-    setTimeout(() => {
-      xhr.send();
-    }, Math.floor(Math.random() * 3000) + 1000);
-  });
+        setTimeout(() => {
+            xhr.send();
+        }, Math.floor(Math.random() * 3000) + 1000);
+    });
 }
 
 // getData('./movies.json')
@@ -33,51 +33,71 @@ function getData(endpoint) {
 //   })
 //   .catch((error) => console.log(error));
 
+// ==================================================
+// Async Await with Promise
+// ==================================================
 async function getAllData() {
-  const movies = await getData('./movies.json');
-  const actors = await getData('./actors.json');
-  const directors = await getData('./directors.json');
-  console.log(movies, actors, directors);
+    const movies = await getData('./movies.json');
+    const actors = await getData('./actors.json');
+    const directors = await getData('./directors.json');
+    console.log(movies, actors, directors);
 }
 
+getAllData();
+
+// ==================================================
+// Async Await with Fetch
+// ==================================================
 async function getAllDataWithFetch() {
-  const moviesRes = await fetch('./movies.json');
-  const movies = await moviesRes.json();
+    const moviesRes = await fetch('./movies.json');
+    const movies = await moviesRes.json();
 
-  const actorsRes = await fetch('./actors.json');
-  const actors = await actorsRes.json();
+    const actorsRes = await fetch('./actors.json');
+    const actors = await actorsRes.json();
 
-  const directorsRes = await fetch('./directors.json');
-  const directors = await directorsRes.json();
+    const directorsRes = await fetch('./directors.json');
+    const directors = await directorsRes.json();
 
-  console.log(movies, actors, directors);
+    console.log(movies, actors, directors);
 }
+
+getAllDataWithFetch();
+
+// ==================================================
+// Async Await with Promise.all()
+// ==================================================
+
+// ========================
+// fetch all data at once and then destructure the data to separate responses
+// ========================
 
 async function getAllDataPromiseAll() {
-  const [moviesRes, actorsRes, directorsRes] = await Promise.all([
-    fetch('./movies.json'),
-    fetch('./actors.json'),
-    fetch('./directors.json'),
-  ]);
+    const [moviesRes, actorsRes, directorsRes] = await Promise.all([
+        fetch('./movies.json'),
+        fetch('./actors.json'),
+        fetch('./directors.json'),
+    ]);
 
-  const movies = await moviesRes.json();
-  const actors = await actorsRes.json();
-  const directors = await directorsRes.json();
+    const movies = await moviesRes.json();
+    const actors = await actorsRes.json();
+    const directors = await directorsRes.json();
 
-  console.log(movies, actors, directors);
+    console.log(movies, actors, directors);
 }
 
+getAllDataPromiseAll();
+
+// ========================
+// fetch all data at once and convert the responses to JSON and then destructure the data to separate variables
+// ========================
 async function getAllDataPromiseAll2() {
-  const [movies, actors, directors] = await Promise.all([
-    fetch('./movies.json').then((res) => res.json()),
-    fetch('./actors.json').then((res) => res.json()),
-    fetch('./directors.json').then((res) => res.json()),
-  ]);
+    const [movies, actors, directors] = await Promise.all([
+        fetch('./movies.json').then((res) => res.json()),
+        fetch('./actors.json').then((res) => res.json()),
+        fetch('./directors.json').then((res) => res.json()),
+    ]);
 
-  console.log(movies, actors, directors);
+    console.log(movies, actors, directors);
 }
 
-// getAllData();
-// getAllDataWithFetch();
-// getAllDataPromiseAll();
 getAllDataPromiseAll2();
